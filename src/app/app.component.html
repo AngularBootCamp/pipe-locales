@@ -1,7 +1,9 @@
 <div class="card">
   <div class="card-content">
     <div class="card-title">
-      Sales Report: {{ reportDate | date: 'mediumDate' }}
+      Sales Report:
+      <!-- French Locale -->
+      {{ reportDate | date: 'mediumDate':undefined:'fr' }}
     </div>
     <table>
       <thead>
@@ -17,19 +19,23 @@
         <tr *ngFor="let record of records">
           <td>{{ record.empName }}</td>
           <td class="number-column">
-            {{ record.units | number: '1.4-4' }}
+            <!-- German Locale -->
+            {{ record.units | number: '1.4-4':'de' }}
           </td>
           <td class="number-column">
+            <!-- Default (US) Locale -->
             {{ record.totalRevenue | currency }}
           </td>
           <td class="number-column">
+            <!-- Default (US) Locale -->
             {{ record.percent / 100 | percent: '1.2-2' }}
           </td>
         </tr>
       </tbody>
     </table>
 
-    Report expires (Russian instead of French):
+    Report expires:
+    <!-- Russian Locale -->
     {{ expirationDate | date: 'longDate':undefined:'ru_RU' }}
   </div>
 </div>
