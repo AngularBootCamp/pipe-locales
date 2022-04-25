@@ -1,41 +1,36 @@
 <div class="card">
   <div class="card-content">
-    <div class="card-title">
-      Sales Report:
-      <!-- French Locale -->
-      {{ reportDate | date: 'mediumDate':undefined:'fr' }}
-    </div>
+    <div class="card-title">Upcoming Classes</div>
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th class="number-column">Units Sold (millions)</th>
-          <th class="number-column">Total</th>
-          <th class="number-column">%</th>
+          <th>Location</th>
+          <th class="date-column">Date</th>
+          <th class="number-column">Price</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let record of records">
-          <td>{{ record.empName }}</td>
-          <td class="number-column">
-            <!-- German Locale -->
-            {{ record.units | number: '1.4-4':'de' }}
+        <tr *ngFor="let session of sessions">
+          <td>{{ session.location }}</td>
+          <td class="date-column">
+            {{
+              session.date
+                | date: 'mediumDate':undefined:session.locale
+            }}
           </td>
           <td class="number-column">
-            <!-- Default (US) Locale -->
-            {{ record.totalRevenue | currency }}
-          </td>
-          <td class="number-column">
-            <!-- Default (US) Locale -->
-            {{ record.percent / 100 | percent: '1.2-2' }}
+            {{
+              session.price.amount
+                | currency
+                  : session.price.currency
+                  : 'symbol'
+                  : undefined
+                  : session.locale
+            }}
           </td>
         </tr>
       </tbody>
     </table>
-
-    Report expires:
-    <!-- Russian Locale -->
-    {{ expirationDate | date: 'longDate':undefined:'ru_RU' }}
   </div>
 </div>
