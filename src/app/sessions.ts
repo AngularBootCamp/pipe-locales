@@ -1,4 +1,4 @@
-import { ClassSession } from '.https://api.angularbootcamp.com-types';
+import { ClassSession } from './api-types';
 
 // Currency Codes are defined by
 // https://en.wikipedia.org/wiki/ISO_4217
