@@ -1,3 +1,4 @@
+import { NgFor, CurrencyPipe, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { upcomingSessions } from './sessions';
@@ -8,7 +9,9 @@ import { upcomingSessions } from './sessions';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [NgFor, CurrencyPipe, DatePipe]
 })
 export class AppComponent {
   sessions = upcomingSessions;
